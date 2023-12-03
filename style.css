@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+
+body {
+  height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  font-family: "Press Start 2P", cursive;
+  font-weight: 600;
+  background-image: url("assets/background.gif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.15);
+  z-index: -1;
+}
+
+.main_title {
+  color: #ffffff;
+  text-align: center;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-size: 65px;
+  -webkit-text-stroke: 1.5px black;
+}
+
+.main_title:hover {
+  color: #feffc0;
+  transform: scale(1.2);
+  -webkit-text-stroke: 2.5px black;
+}
+
+.pixel_button {
+  font-size: 1em;
+  font-family: "Press Start 2P", cursive;
+  width: 250px;
+  height: 70px;
+  color: #787878;
+  background: #ffffff;
+  border: 0px;
+  position: relative;
+  box-shadow: inset -4px 2px 1px 1px grey, inset -4px -2px 1px 1px lightgray,
+    inset 4px 0px 1px 1px lightgray;
+  transition: transform 0.2s ease-in-out;
+}
+
+.pixel_button:hover {
+  cursor: pointer;
+  background-color: #feffc0;
+  transform: translateY(-5px);
+}
+
+.pixel_button:active {
+  top: 5px;
+  box-shadow: -4px 2px 1px 1px grey, -4px -2px 1px 1px lightgray,
+    4px 0px 1px 1px lightgray;
+}
+
+.pixel_button::after {
+  content: "";
+  background: black;
+  position: absolute;
+  left: -2.5%;
+  top: 0;
+  width: 105%;
+  height: 100%;
+  z-index: -1;
+}
+
+.pixel_button::before {
+  content: "";
+  background: black;
+  position: absolute;
+  left: 0;
+  top: -5%;
+  width: 100%;
+  height: 113%;
+  z-index: -1;
+}
+
+.button_container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 50px;
+}
