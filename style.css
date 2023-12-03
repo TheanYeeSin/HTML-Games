@@ -13,7 +13,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.overlay {
+#overlay {
   position: absolute;
   top: 0;
   right: 0;
@@ -85,7 +85,7 @@ body {
   z-index: -1;
 }
 
-.button_container {
+#button_container {
   display: grid;
   grid-template-columns: auto auto auto auto;
   gap: 50px;

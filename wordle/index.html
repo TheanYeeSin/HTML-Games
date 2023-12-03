@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X_UA_Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wordle</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./main.js"></script>
+  </head>
+  <body>
+    <div id="main-container">
+      <div id="game-container">
+        <header>
+          <h1 class="main-title">Wordle</h1>
+        </header>
+        <div id="board-container">
+          <div id="board" class="board"></div>
+        </div>
+
+        <div id="keyboard-container">
+          <div class="keyboard-row">
+            <button data-key="Q">Q</button>
+            <button data-key="W">W</button>
+            <button data-key="E">E</button>
+            <button data-key="R">R</button>
+            <button data-key="T">T</button>
+            <button data-key="Y">Y</button>
+            <button data-key="U">U</button>
+            <button data-key="I">I</button>
+            <button data-key="O">O</button>
+            <button data-key="P">P</button>
+          </div>
+          <div class="keyboard-row">
+            <div class="spacer-half"></div>
+            <button data-key="A">A</button>
+            <button data-key="S">S</button>
+            <button data-key="D">D</button>
+            <button data-key="F">F</button>
+            <button data-key="G">G</button>
+            <button data-key="H">H</button>
+            <button data-key="J">J</button>
+            <button data-key="K">K</button>
+            <button data-key="L">L</button>
+            <div class="spacer-half"></div>
+          </div>
+          <div class="keyboard-row">
+            <button data-key="enter" class="wide-button">Enter</button>
+            <button data-key="Z">Z</button>
+            <button data-key="X">X</button>
+            <button data-key="C">C</button>
+            <button data-key="V">V</button>
+            <button data-key="B">B</button>
+            <button data-key="N">N</button>
+            <button data-key="M">M</button>
+            <button data-key="del" class="wide-button">Del</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

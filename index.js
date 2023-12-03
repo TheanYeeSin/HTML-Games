@@ -1,6 +1,5 @@
 function create_buttons() {
   fetch_game_list().then((game_list) => {
-    console.log(game_list);
     let button_container = document.getElementsByClassName("button_container");
     for (let i = 0; i < game_list.length; i++) {
       let button = document.createElement("button");
