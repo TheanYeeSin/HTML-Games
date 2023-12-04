@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", create_buttons);
+
 function create_buttons() {
   fetch_game_list().then((game_list) => {
     let button_container = document.getElementsByClassName("button_container");
@@ -34,5 +36,3 @@ async function fetch_game_list() {
     console.error("Error fetching game list: ", error);
   }
 }
-
-document.addEventListener("DOMContentLoaded", create_buttons);
