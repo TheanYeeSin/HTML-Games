@@ -7,6 +7,7 @@ function create_squares() {
   for (let i = 0; i < total_square; i++) {
     let square = document.createElement("div");
     square.classList.add("square");
+    square.classList.add("animate__animated");
     square.setAttribute("id", `square-${i + 1}`);
     game_board[0].appendChild(square);
   }
