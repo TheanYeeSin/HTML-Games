@@ -9,15 +9,22 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      data-auto-replace-svg="nest"
+    ></script>
     <script src="./js/create_squares.js"></script>
+    <script src="./js/modal.js"></script>
     <script src="./js/main.js"></script>
   </head>
   <body>
     <div id="main-container">
       <div id="game-container">
         <header>
+          <i class="far fa-question-circle" id="help"></i>
           <h1 class="main-title">Wordle</h1>
+          <i class="far fa-id-badge" id="contact"></i>
         </header>
         <div id="board-container">
           <div id="board" class="board"></div>
@@ -25,40 +32,89 @@
 
         <div id="keyboard-container">
           <div class="keyboard-row">
-            <button data-key="Q">Q</button>
-            <button data-key="W">W</button>
-            <button data-key="E">E</button>
-            <button data-key="R">R</button>
-            <button data-key="T">T</button>
-            <button data-key="Y">Y</button>
-            <button data-key="U">U</button>
-            <button data-key="I">I</button>
-            <button data-key="O">O</button>
-            <button data-key="P">P</button>
+            <button class="keyboard-button" data-key="Q">Q</button>
+            <button class="keyboard-button" data-key="W">W</button>
+            <button class="keyboard-button" data-key="E">E</button>
+            <button class="keyboard-button" data-key="R">R</button>
+            <button class="keyboard-button" data-key="T">T</button>
+            <button class="keyboard-button" data-key="Y">Y</button>
+            <button class="keyboard-button" data-key="U">U</button>
+            <button class="keyboard-button" data-key="I">I</button>
+            <button class="keyboard-button" data-key="O">O</button>
+            <button class="keyboard-button" data-key="P">P</button>
           </div>
           <div class="keyboard-row">
             <div class="spacer-half"></div>
-            <button data-key="A">A</button>
-            <button data-key="S">S</button>
-            <button data-key="D">D</button>
-            <button data-key="F">F</button>
-            <button data-key="G">G</button>
-            <button data-key="H">H</button>
-            <button data-key="J">J</button>
-            <button data-key="K">K</button>
-            <button data-key="L">L</button>
+            <button class="keyboard-button" data-key="A">A</button>
+            <button class="keyboard-button" data-key="S">S</button>
+            <button class="keyboard-button" data-key="D">D</button>
+            <button class="keyboard-button" data-key="F">F</button>
+            <button class="keyboard-button" data-key="G">G</button>
+            <button class="keyboard-button" data-key="H">H</button>
+            <button class="keyboard-button" data-key="J">J</button>
+            <button class="keyboard-button" data-key="K">K</button>
+            <button class="keyboard-button" data-key="L">L</button>
             <div class="spacer-half"></div>
           </div>
           <div class="keyboard-row">
-            <button data-key="ENTER" class="wide-button">Enter</button>
-            <button data-key="Z">Z</button>
-            <button data-key="X">X</button>
-            <button data-key="C">C</button>
-            <button data-key="V">V</button>
-            <button data-key="B">B</button>
-            <button data-key="N">N</button>
-            <button data-key="M">M</button>
-            <button data-key="DEL" class="wide-button">Del</button>
+            <button
+              class="keyboard-button"
+              data-key="ENTER"
+              class="wide-button"
+            >
+              Enter
+            </button>
+            <button class="keyboard-button" data-key="Z">Z</button>
+            <button class="keyboard-button" data-key="X">X</button>
+            <button class="keyboard-button" data-key="C">C</button>
+            <button class="keyboard-button" data-key="V">V</button>
+            <button class="keyboard-button" data-key="B">B</button>
+            <button class="keyboard-button" data-key="N">N</button>
+            <button class="keyboard-button" data-key="M">M</button>
+            <button class="keyboard-button" data-key="DEL" class="wide-button">
+              Del
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="help-modal" class="modal">
+        <div class="modal-content">
+          <span class="close" id="close-help">&times;</span>
+          <p>Guess the <b>WORDLE</b> in six tries.</p>
+          <br />
+          <p>
+            Each guess must be a valid 5 letter word. Hit the enter button to
+            submit.
+          </p>
+          <br />
+          <p>
+            After each guess, the color of the tiles will change to show how
+            close your guess was to the word.
+          </p>
+          <br />
+          <hr />
+          <img src="./assets/example.png" id="example" alt="examples" />
+          <hr />
+          <br />
+          <p>A new WORDLE will be available every time you refresh!</p>
+        </div>
+      </div>
+      <div id="contact-modal" class="modal">
+        <div class="modal-content">
+          <span class="close" id="close-contact">&times;</span>
+          <p>Contact me at</p>
+          <br />
+          <div>
+            <strong>yeesinthean@outlook.com</strong>
+          </div>
+          <br />
+          <div>
+            <strong
+              ><a href="https://github.com/TheanYeeSin" target="_blank"
+                >GITHUB</a
+              ></strong
+            >
           </div>
         </div>
       </div>

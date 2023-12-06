@@ -1,8 +1,18 @@
+//DO AFTER PAGE LOADED
 document.addEventListener("DOMContentLoaded", () => {
   get_new_word();
   const keys = document.querySelectorAll(".keyboard-row button");
   for (let i = 0; i < keys.length; i++) {
     keys[i].addEventListener("click", ({ target }) => {
+      if (is_game_over) {
+        ok_selected = window.confirm("Game is already over. Another game?");
+        if (ok_selected) {
+          location.reload();
+        } else {
+          return;
+        }
+      }
+
       const letter = target.getAttribute("data-key");
 
       if (letter === "ENTER") {
@@ -20,25 +30,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+//VARIABLES
 let guessed_words = [[]];
 let available_square = 1;
 let word_list;
 let word;
 let guessed_word_count = 0;
+let is_game_over = false;
 
-async function fetch_game_list() {
-  try {
-    const response = await fetch("./game_list.json");
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-    const game_list = await response.json();
-    return game_list;
-  } catch (error) {
-    console.error("Error fetching game list: ", error);
-  }
-}
+/*
+=========================================================
+GAME HANDLING
+=========================================================
+*/
 
+//FETCH WORD_LIST.JSON AND APPLY NEW WORD
 async function get_new_word() {
   try {
     const response = await fetch("./word_list.json");
@@ -56,22 +62,28 @@ async function get_new_word() {
   }
 }
 
-function get_current_word_array() {
-  return guessed_words[guessed_words.length - 1];
-}
-
+//UPDATE GUESS WORD EVERY INPUT
 function update_guessed_words(letter) {
   const current_word_array = get_current_word_array();
   if (current_word_array && current_word_array.length < 5) {
     current_word_array.push(letter);
+
     const available_square_element = document.getElementById(
       `square-${available_square}`
     );
+
     available_square_element.textContent = letter;
     available_square = available_square + 1;
   }
 }
 
+/*
+=========================================================
+ANSWER HANDLING
+=========================================================
+*/
+
+//HANDLE USER SUBMISSION
 function handle_submit() {
   const current_word_array = get_current_word_array();
   const current_word = current_word_array.join("");
@@ -85,12 +97,24 @@ function handle_submit() {
 
       current_word_array.forEach((letter, index) => {
         setTimeout(() => {
-          const tile_color = get_tile_color(letter, index);
-          const letter_id = first_letter_id + index;
+          const tile_class = get_tile_class(
+            letter.toLowerCase(),
+            index,
+            current_word_array
+          );
+          if (tile_class) {
+            console.log(tile_class);
+            const letter_id = first_letter_id + index;
 
-          const letter_element = document.getElementById(`square-${letter_id}`);
-          letter_element.classList.add("animate__flipInX");
-          letter_element.style = `background-color:${tile_color}; border-color:${tile_color}`;
+            const letter_element = document.getElementById(
+              `square-${letter_id}`
+            );
+
+            letter_element.classList.add("animate__flipInX");
+            letter_element.classList.add(tile_class);
+            const key_element = document.querySelector(`[data-key=${letter}]`);
+            key_element.classList.add(tile_class);
+          }
         }, interval * index);
       });
       guessed_word_count += 1;
@@ -103,10 +127,18 @@ function handle_submit() {
   }
 }
 
+//HANDLE LETTER DELETION
 function handle_delete() {
   const current_word_array = get_current_word_array();
-  const removed_letter = current_word_array.pop();
+
+  if (!current_word_array.length) {
+    return;
+  }
+
+  current_word_array.pop();
+
   guessed_words[guessed_words.length - 1] = current_word_array;
+
   const last_letter_element = document.getElementById(
     `square-${available_square - 1}`
   );
@@ -115,29 +147,88 @@ function handle_delete() {
   available_square -= 1;
 }
 
-function get_tile_color(letter, index) {
-  const is_letter_correct = word.includes(letter.toLowerCase());
-  const letter_in_that_position = word.charAt(index);
-  const is_position_correct =
-    letter.toLowerCase() === letter_in_that_position.toLowerCase();
-
-  if (!is_letter_correct) {
-    return "var(--wrong-letter-color)";
-  }
-  if (is_position_correct) {
-    return "var(--correct-letter-color)";
-  }
-  return "var(--correct-letter-but-wrong-position-color)";
-}
-
+//VERIFY THE WORD INPUT
 function check_word(current_word) {
   if (current_word.toLowerCase() == word.toLowerCase()) {
-    window.alert("Congratulations");
+    ok_selected = window.confirm("Congratulations. Another game?");
+    is_game_over = true;
+    if (ok_selected) {
+      location.reload();
+    }
   }
   if (
     guessed_words.length === 6 &&
     current_word.toLowerCase() != word.toLowerCase()
   ) {
-    window.alert(`You lost, the word is ${word}`);
+    ok_selected = window.confirm(
+      `You lost, the word is ${word}. Another game?`
+    );
+    is_game_over = true;
+    if (ok_selected) {
+      location.reload();
+    }
   }
+}
+
+/*
+=========================================================
+UTILITIES
+=========================================================
+*/
+
+//GET THE CURRENT WORD ARRAY
+function get_current_word_array() {
+  return guessed_words[guessed_words.length - 1];
+}
+
+//GET THE INDICES OF THE LETTER
+function get_indices_of_letter(letter, array) {
+  let indices = [];
+  let index = array.indexOf(letter);
+  while (index != -1) {
+    indices.push(index);
+    index = array.indexOf(letter, index + 1);
+  }
+  return indices;
+}
+
+//GET THE TILE CLASS FOR THE SQUARE AND KEYBOARD TO UPDATE THEIR COLORS
+function get_tile_class(letter, index, current_word_array) {
+  const is_letter_correct = word.includes(letter);
+  if (!is_letter_correct) {
+    return "incorrect-letter";
+  }
+
+  const letter_in_that_position = word.charAt(index);
+  const is_position_correct = letter === letter_in_that_position;
+  if (is_position_correct) {
+    return "correct-letter-and-position";
+  }
+
+  const is_guessed_more_than_once =
+    current_word_array.filter((l) => l === letter).length > 1;
+
+  if (!is_guessed_more_than_once) {
+    return "correct-letter";
+  }
+
+  const exixts_more_than_once =
+    word.split("").filter((l) => l === letter).length > 1;
+
+  if (exixts_more_than_once) {
+    return "correct-letter";
+  }
+
+  const has_been_guessed_already = current_word_array.indexOf(letter) < index;
+  const indices = get_indices_of_letter(letter, word.split(""));
+  const other_indices = indices.filter((i) => i !== index);
+  const is_guessed_correctly_later = other_indices.some(
+    (i) => i > index && current_word_array[i] === letter
+  );
+
+  if (!has_been_guessed_already && !is_guessed_correctly_later) {
+    return "correct-letter";
+  }
+
+  return "incorrect-letter";
 }

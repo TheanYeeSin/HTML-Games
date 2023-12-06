@@ -1,5 +1,7 @@
+//DO AFTER PAGE LOADED
 document.addEventListener("DOMContentLoaded", create_squares);
 
+//CREATE 30 SQUARES
 function create_squares() {
   const game_board = document.getElementsByClassName("board");
   const total_square = 30;
