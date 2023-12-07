@@ -2,6 +2,8 @@
 
 This is a website with a lot of games made in vanilla HTML, CSS, and JavaScript
 
+Link: https://theanyeesin.github.io/HTML-Games/
+
 ## Languages Used
 
 - HTML
