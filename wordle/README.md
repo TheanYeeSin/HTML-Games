@@ -10,7 +10,7 @@ This is a wordle clone made in vanilla HTML, CSS, JavaScript
 
 ![Game Instruction](https://github.com/TheanYeeSin/HTML-Games/blob/main/wordle/assets/example.png)
 
-- https://github.com/TheanYeeSin/HTML-Games/blob/main/wordle/assets/example.png
+- A new WORDLE will be available every time you refresh!
 
 ## Credits
 Inspired by ianlenehan (https://github.com/ianlenehan/wordle-clone)
