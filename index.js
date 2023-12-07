@@ -8,7 +8,7 @@ function create_buttons() {
       button.className = "pixel_button";
       button.textContent = format_text(game_list[i].game_name);
       button.onclick = function () {
-        window.location.href = game_list[i].game_name;
+        window.location.href = game_list[i].game_name.toLowerCase();
       };
 
       button_container[0].appendChild(button);
