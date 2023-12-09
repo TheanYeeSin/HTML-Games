@@ -11,6 +11,7 @@ This is a website with a lot of games made in vanilla HTML, CSS, and JavaScript
 ## Games List
 
 - Wordle
+- Snake
 
 ## Installation
 
