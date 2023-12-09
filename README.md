@@ -13,6 +13,7 @@ Link: https://theanyeesin.github.io/HTML-Games/
 ## Games List
 
 - Wordle
+- Snake
 
 ## Installation
 
