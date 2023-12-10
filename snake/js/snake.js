@@ -1,9 +1,16 @@
+/*
+=========================================================
+SNAKE
+=========================================================
+*/
+
 import { get_input_direction } from "./input.js";
 
 export const SNAKE_SPEED_PER_SECOND = 7;
 const snake_body = [{ x: 13, y: 13 }];
 let new_segment = 0;
 
+//UPDATE SNAKE (POSITION, INPUT ETC)
 export function update_snake() {
   add_segments();
   const input_direction = get_input_direction();
@@ -15,6 +22,7 @@ export function update_snake() {
   snake_body[0].y += input_direction.y;
 }
 
+//RENDER THE SNAKE
 export function render_snake(game_board) {
   snake_body.forEach((segment) => {
     const snake_element = document.createElement("div");
@@ -25,6 +33,7 @@ export function render_snake(game_board) {
   });
 }
 
+//CHECK WHETHER COLLAPSE WITH THE SNAKE
 export function on_snake(position, { ignore_head = false } = {}) {
   return snake_body.some((segment, index) => {
     if (ignore_head && index === 0) return false;
@@ -33,6 +42,7 @@ export function on_snake(position, { ignore_head = false } = {}) {
   });
 }
 
+//RETURN SNAKE HEAD INDEX
 export function get_snake_head() {
   return snake_body[0];
 }

@@ -1,3 +1,9 @@
+/*
+=========================================================
+MAIN
+=========================================================
+*/
+
 import {
   update_snake,
   render_snake,
@@ -13,6 +19,7 @@ let is_game_over = false;
 const game_board = document.getElementById("game-board");
 const score_board = document.getElementById("score-board");
 
+//MAIN FUNCTION
 function main(current_time) {
   if (is_game_over) {
     if (confirm("Game over. Another game?")) {
@@ -31,18 +38,21 @@ function main(current_time) {
 
 window.requestAnimationFrame(main);
 
+//UPDATE THE GAME
 function update() {
   update_snake();
   update_apple();
   check_death();
 }
 
+//RENDER THE GAME
 function render() {
   game_board.innerHTML = "";
   render_snake(game_board);
   render_apple(game_board);
 }
 
+//CHECK WHETHER THE SNAKE IS DEAD
 function check_death() {
   is_game_over = outside_grid(get_snake_head()) || snake_intersection();
 }

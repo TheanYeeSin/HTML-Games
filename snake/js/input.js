@@ -1,3 +1,5 @@
+//CONTROL INPUT (UP, DOWN, LEFT, RIGHT ARROW KEYS)
+
 let input_direction = { x: 0, y: 0 };
 let last_input_direction = { x: 0, y: 0 };
 
@@ -22,6 +24,7 @@ window.addEventListener("keydown", (e) => {
   }
 });
 
+//RETURN THE INPUT DIRECTION
 export function get_input_direction() {
   last_input_direction = input_direction;
   return input_direction;
