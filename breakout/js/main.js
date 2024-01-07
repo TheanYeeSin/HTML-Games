@@ -32,7 +32,7 @@ export const PADDLE_HEIGHT = 10;
 export const PADDLE_WIDTH = 80;
 var paddle_x = (canvas.width - PADDLE_WIDTH) / 2;
 var paddle_y = canvas.height - PADDLE_HEIGHT * 5;
-const PADDLE_SPEED = 8;
+const PADDLE_SPEED = 9;
 export const PADDLE_COLOR = "#dcdcdc";
 
 //FOR BRICKS
@@ -97,6 +97,10 @@ function collision_detection() {
         ball_dy = -ball_dy;
         brick.status = 0;
         score++;
+        if (score == 30) {
+          ball_dx = ball_dx < 0 ? -(Math.abs(ball_dx) + 1) : ball_dx + 1;
+          ball_dy = ball_dy < 0 ? -(Math.abs(ball_dy) + 1) : ball_dy + 1;
+        }
         if (score == BRICK_COLUMN_COUNT * BRICK_ROW_COUNT) {
           if (confirm("You WON. Another game?")) {
             location.reload();
@@ -129,11 +133,11 @@ export function update_ball_direction() {
     ball_x + ball_dy < BALL_RADIUS
   ) {
     //HIT THE SIDES
-    ball_dx = -ball_dx;
+    ball_dx = -ball_dx + (Math.random() < 0.5 ? 0.1 : -0.1);
   }
   if (ball_y + ball_dy < BALL_RADIUS) {
     //HIT THE CEILLING
-    ball_dy = -ball_dy;
+    ball_dy = -ball_dy + (Math.random() < 0.5 ? 0.1 : -0.1);
   } else if (
     ball_y >= paddle_y &&
     ball_y <= paddle_y + PADDLE_HEIGHT &&
@@ -141,7 +145,7 @@ export function update_ball_direction() {
     ball_x <= paddle_x + PADDLE_WIDTH
   ) {
     //HIT THE PADDLE
-    ball_dy = -ball_dy;
+    ball_dy = -ball_dy + (Math.random() < 0.5 ? 0.1 : -0.1);
   } else if (
     ball_y + ball_dy > canvas.height - BALL_RADIUS &&
     is_game_over == false
