@@ -12,5 +12,9 @@ This is a wordle clone made in vanilla HTML, CSS, JavaScript
 
 - A new WORDLE will be available every time you refresh!
 
+## Screenshot
+
+![image](https://github.com/TheanYeeSin/HTML-Games/assets/68727045/af7fb810-a0d4-4289-af4d-2d6029241f73)
+
 ## Credits
 Inspired by ianlenehan (https://github.com/ianlenehan/wordle-clone)
