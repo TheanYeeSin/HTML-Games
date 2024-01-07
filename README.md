@@ -15,6 +15,7 @@ Link: https://theanyeesin.github.io/HTML-Games/
 - Wordle
 - Snake
 - Minesweeper
+- Breakout
 
 ## Installation
 
