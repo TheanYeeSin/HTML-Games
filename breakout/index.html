@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X_UA_Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breakout</title>
+    <script
+      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      data-auto-replace-svg="nest"
+    ></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+      canvas {
+        font-family: "Press Start 2P", cursive;
+      }
+    </style>
+    <script src="./js/modal.js"></script>
+    <script src="./js/main.js" defer type="module"></script>
+  </head>
+  <body>
+    <div id="main-container">
+      <div id="game-container">
+        <header>
+          <i class="far fa-question-circle" id="info"></i>
+          <h1 class="main-title">Breakout</h1>
+          <h2 id="score-board">0</h2>
+        </header>
+        <div id="game-board">
+          <canvas id="game-canvas"></canvas>
+        </div>
+      </div>
+    </div>
+    <div id="info-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="close-info">&times;</span>
+        <p>
+          <b>OBJECTIVE: </b> Using a single ball, the player must knock down as
+          many bricks as possible by using the walls and/or the paddle below to
+          hit the ball against the bricks and eliminate them.
+        </p>
+        <br />
+        <hr />
+        <br />
+        <p>
+          <b>CONTROLS: </b><br />
+          [ARROW LEFT / A] - to move left. <br />[ARROW RIGHT / D] - to move
+          right.<br />
+          Press any key to start.
+        </p>
+        <br />
+        <hr />
+        <br />
+        <p>Have Fun and Good Luck.</p>
+        <br />
+        <p>Contact me at</p>
+        <br />
+        <div>
+          <strong>yeesinthean@outlook.com</strong>
+        </div>
+        <br />
+        <div>
+          <strong
+            ><a href="https://github.com/TheanYeeSin" target="_blank"
+              >GITHUB</a
+            ></strong
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

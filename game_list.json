@@ -1,6 +1,11 @@
 [
   {
-    "game_name": "Wordle",
+    "game_name": "Breakout",
+    "game_logo": "/"
+  },
+
+  {
+    "game_name": "Minesweeper",
     "game_logo": "/"
   },
   {
@@ -8,15 +13,7 @@
     "game_logo": "/"
   },
   {
-    "game_name": "Minesweeper",
-    "game_logo": "/"
-  },
-  {
-    "game_name": "Game 4",
-    "game_logo": "/"
-  },
-  {
-    "game_name": "Game 5",
+    "game_name": "Wordle",
     "game_logo": "/"
   }
 ]
