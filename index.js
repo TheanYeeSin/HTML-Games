@@ -6,9 +6,9 @@ function create_buttons() {
     for (let i = 0; i < game_list.length; i++) {
       let button = document.createElement("button");
       button.className = "pixel_button";
-      button.textContent = format_text(game_list[i].game_name);
+      button.textContent = format_display_text(game_list[i].game_name);
       button.onclick = function () {
-        window.location.href = game_list[i].game_name.toLowerCase();
+        window.location.href = format_url_text(game_list[i].game_name);
       };
 
       button_container[0].appendChild(button);
@@ -16,11 +16,16 @@ function create_buttons() {
   });
 }
 
-function format_text(input) {
+function format_display_text(input) {
   let formatted_text = input.replace(/_/g, " ");
   formatted_text = formatted_text.replace(/\b\w/g, function (match) {
     return match.toUpperCase();
   });
+  return formatted_text;
+}
+
+function format_url_text(input) {
+  let formatted_text = input.replace(/[, ]/g, "").toLowerCase();
   return formatted_text;
 }
 

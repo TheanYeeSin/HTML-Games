@@ -3,9 +3,12 @@
     "game_name": "Breakout",
     "game_logo": "/"
   },
-
   {
     "game_name": "Minesweeper",
+    "game_logo": "/"
+  },
+  {
+    "game_name": "Rock, Paper, Scissors",
     "game_logo": "/"
   },
   {

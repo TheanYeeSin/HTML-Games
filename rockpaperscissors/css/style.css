@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+
+:root {
+  --main-background-color: rgb(30, 30, 30);
+  --main-border-color: rgb(150, 150, 150);
+  --main-letter-color: rgb(220, 220, 220);
+  --modal-background-color: rgba(45, 45, 45, 0.7);
+  --modal-content-background-color: rgb(18, 18, 18);
+  --hover-color: rgb(100, 100, 100);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Press Start 2P", cursive;
+}
+
+#main-container {
+  display: flex;
+  background-color: var(--main-background-color);
+  height: 100%;
+  justify-content: center;
+}
+
+#game-container {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--main-border-color);
+  margin-bottom: 1rem;
+}
+
+#info {
+  color: var(--main-border-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.main-title {
+  color: var(--main-letter-color);
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+#score-board {
+  color: var(--main-letter-color);
+  font-size: 2rem;
+}
+
+#game-board {
+  width: 100%;
+  max-width: 1000px;
+  min-width: 550px;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+#bot-side,
+#player-side {
+  width: 100%;
+  height: 40%;
+  border: 1px solid var(--main-border-color);
+  color: var(--main-letter-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.rock,
+.paper,
+.scissors {
+  width: 150px;
+  height: 50px;
+  font-family: "Press Start 2P", cursive;
+  background-color: var(--main-background-color);
+  color: var(--main-letter-color);
+  border-radius: 10px;
+  border: 1px solid var(--main-border-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.rock:hover,
+.paper:hover,
+.scissors:hover {
+  background-color: var(--hover-color);
+  cursor: pointer;
+}
+
+.V {
+  color: red;
+}
+.S {
+  color: blue;
+}
+
+#player-side .highlight {
+  background-color: green;
+}
+
+#bot-side .highlight {
+  background-color: coral;
+}
+
+/*
+=========================================================
+MODAL
+=========================================================
+*/
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: var(--modal-background-color);
+}
+
+.modal-content {
+  background-color: var(--modal-content-background-color);
+  font-size: 0.8rem;
+  line-height: 1.1rem;
+  margin: 5% auto;
+  padding: 20px;
+  width: 80%;
+  color: var(--main-letter-color);
+  max-width: 550px;
+}
+
+.modal-content hr {
+  border: 1px solid var(--main-border-color);
+}
+
+/*
+=========================================================
+CLOSE BUTTON
+=========================================================
+*/
+
+.close {
+  color: var(--main-letter-color);
+  float: right;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

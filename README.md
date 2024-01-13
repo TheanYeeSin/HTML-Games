@@ -12,10 +12,11 @@ Link: https://theanyeesin.github.io/HTML-Games/
 
 ## Games List
 
-- Wordle
-- Snake
+- Breakout 
 - Minesweeper
-- Breakout
+- Rock, Paper, Scissors
+- Snake
+- Wordle
 
 ## Installation
 
